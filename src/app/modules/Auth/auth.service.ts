@@ -17,11 +17,9 @@ const loginUser = async (payload: TLoginUser) => {
         throw new AppError(httpStatus.NOT_FOUND, 'This User is not Found!')
     }
 
-    console.log(user)
-
     // create token 
     const jwtPayload = {
-        userId: user.email,
+        email: user.email,
         role: user.role
     }
 

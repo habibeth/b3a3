@@ -1,5 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 import { RoomModel, TRoom } from "./room.interface";
+import { meetingRoomAmenities } from "./room.constant";
 
 
 
@@ -26,15 +27,14 @@ const roomSchema = new Schema<TRoom, RoomModel>({
     },
     amenities: {
         type: [String],
-        required: true,
+        enum: meetingRoomAmenities
     },
 })
 
 
-roomSchema.statics.isRoomExists = async function (roomNo: string, floorNo: string) {
+roomSchema.statics.isRoomExists = async function (roomNo: number, floorNo: number) {
     const existingRoom = await Room.findOne({ roomNo, floorNo });
     return existingRoom;
 };
 
-
-const Room = mongoose.model<TRoom>('Room', roomSchema)
+export const Room = mongoose.model<TRoom, RoomModel>('Room', roomSchema)

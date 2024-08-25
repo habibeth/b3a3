@@ -1,4 +1,7 @@
 import { Model } from "mongoose";
+import { meetingRoomAmenities } from "./room.constant";
+
+type TAmenities = keyof typeof meetingRoomAmenities
 
 export interface TRoom {
     name: string;
@@ -6,9 +9,9 @@ export interface TRoom {
     floorNo: number;
     capacity: number;
     pricePerSlot: number;
-    amenities: string[];
+    amenities: TAmenities[];
 };
 
 export interface RoomModel extends Model<TRoom> {
-    isRoomExists(id: string): Promise<TRoom | null>;
+    isRoomExists(roomNo: number, floorNo: number): Promise<TRoom | null>;
 }
