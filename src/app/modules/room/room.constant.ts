@@ -1,0 +1,1 @@
+export const roomAmenities = ["Projector", "Whiteboard"]
