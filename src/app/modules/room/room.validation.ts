@@ -13,6 +13,19 @@ const createRoomValidationSchema = z.object({
 });
 
 
+const updateRoomValidationSchema = z.object({
+    body: z.object({
+        name: z.string().optional(),
+        roomNo: z.number().optional(),
+        floorNo: z.number().optional(),
+        capacity: z.number().optional(),
+        pricePerSlot: z.number().optional(),
+        amenities: z.array(z.enum([...meetingRoomAmenities] as [string, ...string[]])).optional(),
+    })
+});
+
+
 export const RoomValidationSchema = {
-    createRoomValidationSchema
+    createRoomValidationSchema,
+    updateRoomValidationSchema
 }

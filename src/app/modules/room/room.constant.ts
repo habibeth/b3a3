@@ -20,3 +20,12 @@ export const meetingRoomAmenities = [
     "Printer",
     "Snacks and Refreshments",
 ]
+
+
+export const RoomSearchableFields = [
+    'name',
+    'roomNo',
+    'floorNo',
+    'capacity',
+    'amenities',
+]

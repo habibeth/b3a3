@@ -10,6 +10,7 @@ export interface TRoom {
     capacity: number;
     pricePerSlot: number;
     amenities: TAmenities[];
+    isDeleted: boolean;
 };
 
 export interface RoomModel extends Model<TRoom> {

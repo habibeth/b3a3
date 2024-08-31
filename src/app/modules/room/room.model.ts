@@ -29,6 +29,9 @@ const roomSchema = new Schema<TRoom, RoomModel>({
         type: [String],
         enum: meetingRoomAmenities
     },
+    isDeleted: {
+        type: Boolean,
+    },
 })
 
 

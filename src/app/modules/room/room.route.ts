@@ -16,6 +16,27 @@ route.post(
     RoomControllers.createRoom
 )
 
+route.get(
+    '/:id',
+    RoomControllers.getSingleRoom
+)
+route.get(
+    '/',
+    RoomControllers.getAllRooms
+)
+
+route.put(
+    '/:roomId',
+    auth(USER_ROLE.admin),
+    validateRequest(RoomValidationSchema.updateRoomValidationSchema),
+    RoomControllers.updateRoom
+)
+
+route.delete(
+    '/:id',
+    RoomControllers.deleteRoom
+)
+
 
 
 
