@@ -13,7 +13,7 @@ app.use(cors());
 app.use('/api', router)
 
 app.get('/', (req: Request, res: Response) => {
-    res.send('AKCL IT Server Running Now!')
+    res.send('Server Running Now!')
 })
 
 
