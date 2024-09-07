@@ -60,7 +60,7 @@ const createSlotsIntoDB = async (payload: TSlots) => {
 
 
 const getAllSlotsFromDB = async (query: Record<string, unknown>) => {
-    const courseQuery = new QueryBuilder(Slots.find().populate('room'), query)
+    const courseQuery = new QueryBuilder(Slots.find({ isBooked: false }).populate('room'), query)
         .search(SlotsSearchableFields)
         .filter()
         .sort()

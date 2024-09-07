@@ -20,13 +20,13 @@ const getSingleRoomFromDB = async (id: string) => {
 }
 
 const getAllRoomFromDB = async (query: Record<string, unknown>) => {
-    const courseQuery = new QueryBuilder(Room.find(), query)
+    const roomQuery = new QueryBuilder(Room.find(), query)
         .search(RoomSearchableFields)
         .filter()
         .sort()
         .paginate()
         .fields();
-    const result = await courseQuery.modelQuery;
+    const result = await roomQuery.modelQuery;
 
     return result
 }

@@ -40,4 +40,9 @@ roomSchema.statics.isRoomExists = async function (roomNo: number, floorNo: numbe
     return existingRoom;
 };
 
+roomSchema.statics.isRoomExistsById = async function (id: Schema.Types.ObjectId) {
+    const existingRoomById = await Room.findOne({ _id: id });
+    return existingRoomById;
+};
+
 export const Room = mongoose.model<TRoom, RoomModel>('Room', roomSchema)

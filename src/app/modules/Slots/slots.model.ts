@@ -25,11 +25,6 @@ const slotsSchema = new Schema<TSlots, SlotsModel>({
     },
 });
 
-slotsSchema.pre('find', async function (next) {
-    this.find({ isBooked: { $ne: true } })
-
-    next()
-})
 
 slotsSchema.pre('find', async function (next) {
     this.find({ isDeleted: { $ne: true } })
