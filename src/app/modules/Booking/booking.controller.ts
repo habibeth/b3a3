@@ -33,8 +33,32 @@ const getMyBookings = catchAsync(async (req, res) => {
     })
 })
 
+
+const updateBookings = catchAsync(async (req, res) => {
+    const { bookingId } = req.params;
+
+    const result = await BookingServices.updateBookingFromDB(bookingId, req.body);
+    sendResponse(res, {
+        message: "Booking updated successfully",
+        data: result
+    })
+})
+
+
+const deleteBookings = catchAsync(async (req, res) => {
+    const { bookingId } = req.params;
+
+    const result = await BookingServices.deleteBookingFromDB(bookingId);
+    sendResponse(res, {
+        message: "Booking deleted successfully",
+        data: result
+    })
+})
+
 export const BookingControllers = {
     createBooking,
     getAllBookings,
-    getMyBookings
+    getMyBookings,
+    updateBookings,
+    deleteBookings
 }

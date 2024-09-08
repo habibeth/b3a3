@@ -13,7 +13,11 @@ const auth = (...requiredRoles: TUserRole[]) => {
         const bearerToken: any = req.headers.authorization;
 
         if (!bearerToken) {
-            throw new AppError(httpStatus.UNAUTHORIZED, 'You are not authorized!');
+            return res.status(httpStatus.UNAUTHORIZED).json({
+                success: false,
+                statusCode: httpStatus.UNAUTHORIZED,
+                message: "You have no access to this route",
+            })
         }
 
         const splitToken = bearerToken?.split(' ')

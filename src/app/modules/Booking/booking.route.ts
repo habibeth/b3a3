@@ -16,4 +16,14 @@ route.get(
     BookingControllers.getAllBookings
 )
 
+route.put(
+    '/:bookingId',
+    BookingControllers.updateBookings
+)
+
+route.delete(
+    '/:bookingId',
+    BookingControllers.deleteBookings
+)
+
 export const BookingRouts = route

@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { Types } from "mongoose";
 import { TBooking } from "./booking.interface";
 import { Booking } from "./booking.model";
 import { Slots } from "../Slots/slots.model";
@@ -95,8 +95,23 @@ const getMyBookingFromDB = async (email: any) => {
     return result;
 }
 
+const updateBookingFromDB = async (id: string, payload: Record<string, unknown>) => {
+    const result = await Booking.findByIdAndUpdate(id, payload, { new: true, runValidators: true });
+    return result;
+}
+
+const deleteBookingFromDB = async (id: string) => {
+    const modifiedData = {
+        isDeleted: true
+    }
+    const result = await Booking.findByIdAndUpdate(id, modifiedData, { new: true, runValidators: true });
+    return result;
+}
+
 export const BookingServices = {
     createBookingIntoDB,
     getAllBookingFromDB,
-    getMyBookingFromDB
+    getMyBookingFromDB,
+    updateBookingFromDB,
+    deleteBookingFromDB
 }

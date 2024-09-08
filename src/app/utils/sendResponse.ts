@@ -9,6 +9,14 @@ type TResponse<T> = {
 
 
 const sendResponse = <T>(res: Response, data: TResponse<T>) => {
+    if (Array.isArray(data?.data) && data?.data?.length === 0) {
+        res.status(httpStatus.NOT_FOUND).send({
+            success: false,
+            statusCode: 404,
+            message: "No Data Found",
+            data: []
+        })
+    }
     res.status(httpStatus.OK).json({
         success: true,
         statusCode: httpStatus.OK,
